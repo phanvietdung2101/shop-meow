@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <a href="/shop-cart">Gio hang o day ne</a>
+    <tr>
+        <td th:each="product : ${products}">
+            <p th:text="${product.name}"></p>
+            <img th:src="${product.imageUrl}">
+            <p th:text="${product.price}"></p>
+            <a th:href="@{'/add-to-cart/' + ${product.id}}">Add</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

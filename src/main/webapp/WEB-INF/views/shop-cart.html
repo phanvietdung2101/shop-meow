@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:each="cartItem : ${cartItems}">
+    <form method="post" th:action="@{'/remove-cart-item/' + ${cartItem.id} }">
+        <input type="submit" value="Remove this item">
+    </form>
+    <form method="post" th:action="@{/edit-cart}">
+        <p>
+            <strong th:text="${cartItem.product.name}"></strong>
+        </p>
+        <p th:text="${cartItem.totalPrice}"></p>
+        <input type="number" name="quantity" id="quantity" th:value="${cartItem.quantity}" onchange="this.form.submit()">
+        <input name="id" id="id" th:value="${cartItem.id}" type="hidden">
+    </form>
+</th:block>
+<strong>Total price  <span th:text="${cart.totalPrice}"></span></strong>
+</body>
+</html>
